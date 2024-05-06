@@ -47,7 +47,7 @@ const ProfilePage = () => {
     }, []);
     return (
         <div className="profile-container">
-            <h1>Personal Information</h1>
+            <h1>User Lists</h1>
             <form className="profile-form">
                 <div className="form-group">
 

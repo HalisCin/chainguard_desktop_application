@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import '../styles/pageOne.css';
+import '../styles/adminPage.css';
 import {IonIcon} from '@ionic/react';
 import {
     homeOutline,
     personOutline,
-    cubeOutline,
     logOutOutline, menuOutline,
 } from 'ionicons/icons';
 import {useNavigate} from "react-router-dom";
 import QrCodeGenerator from "./QrCodeGenerator";
 import "firebase/auth";
+import UsersList from './userslist';
 
-function PageOne() {
+function AdminPage() {
     const [isActive, setIsActive] = useState(false);
     const [selectedTab, setSelectedTab] = useState('');
     const [profileData, setProfileData] = useState({
@@ -85,16 +85,7 @@ function PageOne() {
                         <b></b>
                         <a href="#">
                             <span className="icon"><IonIcon icon={personOutline}/></span>
-                            <span className="title">Profile Settings</span>
-                        </a>
-                    </li>
-                    <li className={`list ${selectedTab === 'createBox' ? 'active' : ''}`} id="createBox"
-                        onClick={() => handleNavigation('createBox')}>
-                        <b></b>
-                        <b></b>
-                        <a href="#">
-                            <span className="icon"><IonIcon icon={cubeOutline}/></span>
-                            <span className="title">Create Box</span>
+                            <span className="title">Admin Operations</span>
                         </a>
                     </li>
                     <li className={`list ${selectedTab === 'logout' ? 'active' : ''}`} id="logout" onClick={logout}>
@@ -116,68 +107,16 @@ function PageOne() {
 
             {selectedTab === 'home' && (
                 <div className="welcome-message">
-                    <h1>Welcome to ChainGuard</h1>
+                    <h1>Welcome to ChainGuard, Admin</h1>
 
                     <img src="/logo.png" alt="ChainGuard Logo"/>
                 </div>
             )}
 
             {selectedTab === 'profile' && (
-                <div className="profile-container">
-                    <h1>Personal Information</h1>
-                    <form className="profile-form">
-                        <div className="form-group">
-                            Email: <input
-                            type="email"
-                            name="email"
-                            value={profileData.email}
-                            readOnly
-                            className="profile-input"
-                        />
-                        </div>
-                        <div className="form-group">
-                            <text>Full Name:</text>
-                            <input
-                                type="text"
-                                name="fullname"
-                                value={profileData.fullname}
-                                readOnly
-                                className="profile-input"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <text>ID Number:</text>
-                            <input
-                                type="text"
-                                name="id_Number"
-                                value={profileData.id_Number}
-                                readOnly
-                                className="profile-input"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <text>Last Login:</text>
-                            <input
-                                type="text"
-                                name="last_login"
-                                value={profileData.last_login}
-                                readOnly
-                                className="profile-input"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <text>Role:</text>
-                            <input
-                                type="text"
-                                name="role"
-                                value={profileData.role}
-                                readOnly
-                                className="profile-input"
-                            />
-                        </div>
-                    </form>
-                </div>
+                <UsersList />
             )}
+
 
             {selectedTab === 'createBox' && (
                 <div className="create-box-container">
@@ -188,4 +127,4 @@ function PageOne() {
     );
 }
 
-export default PageOne;
+export default AdminPage;

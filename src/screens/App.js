@@ -137,7 +137,7 @@ function App() {
         try {
            // await signInWithEmailAndPassword(auth, email, password);
             alert('User Logged In');
-            navigate("/pageOne");
+            navigate("/adminPage");
         } catch (error) {
             alert("An error occurred. Please try again.");
         }

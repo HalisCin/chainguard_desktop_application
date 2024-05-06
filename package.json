@@ -46,5 +46,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3",
+    "electron-is-dev": "^3.0.1"
+  },
+  "electron": "electron .",
+  "dist": "electron-builder",
+  "main": "electron.js",
+
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "My Electron App",
+    "directories": {
+      "output": "dist"
+    }
   }
 }
