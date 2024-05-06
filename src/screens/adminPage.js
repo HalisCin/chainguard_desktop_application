@@ -3,6 +3,7 @@ import '../styles/adminPage.css';
 import {IonIcon} from '@ionic/react';
 import {
     homeOutline,
+    cogOutline,
     personOutline,
     logOutOutline, menuOutline,
 } from 'ionicons/icons';
@@ -84,7 +85,7 @@ function AdminPage() {
                         <b></b>
                         <b></b>
                         <a href="#">
-                            <span className="icon"><IonIcon icon={personOutline}/></span>
+                            <span className="icon"><IonIcon icon={cogOutline}/></span>
                             <span className="title">Admin Operations</span>
                         </a>
                     </li>
