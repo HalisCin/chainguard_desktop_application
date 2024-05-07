@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/adminPage.css';
-import {IonIcon} from '@ionic/react';
+import { IonIcon } from '@ionic/react';
 import {
     homeOutline,
     cogOutline,
     personOutline,
-    logOutOutline, menuOutline,
+    logOutOutline,
+    menuOutline,
+    cubeOutline,
+    qrCodeOutline,
 } from 'ionicons/icons';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import QrCodeGenerator from "./QrCodeGenerator";
 import "firebase/auth";
 import UsersList from './userslist';
+import BoxList from "./boxlist";
 
 function AdminPage() {
     const [isActive, setIsActive] = useState(false);
@@ -76,7 +80,7 @@ function AdminPage() {
                         <b></b>
                         <b></b>
                         <a href="#">
-                            <span className="icon"><IonIcon icon={homeOutline}/></span>
+                            <span className="icon"><IonIcon icon={homeOutline} /></span>
                             <span className="title">Home</span>
                         </a>
                     </li>
@@ -85,15 +89,33 @@ function AdminPage() {
                         <b></b>
                         <b></b>
                         <a href="#">
-                            <span className="icon"><IonIcon icon={cogOutline}/></span>
-                            <span className="title">Admin Operations</span>
+                            <span className="icon"><IonIcon icon={cogOutline} /></span>
+                            <span className="title">User Operations</span>
+                        </a>
+                    </li>
+                    <li className={`list ${selectedTab === 'createBox' ? 'active' : ''}`} id="createBox"
+                        onClick={() => handleNavigation('createBox')}>
+                        <b></b>
+                        <b></b>
+                        <a href="#">
+                            <span className="icon"><IonIcon icon={cubeOutline} /></span>
+                            <span className="title">Box Operations</span>
+                        </a>
+                    </li>
+                    <li className={`list ${selectedTab === 'generateQR' ? 'active' : ''}`} id="generateQR"
+                        onClick={() => handleNavigation('generateQR')}>
+                        <b></b>
+                        <b></b>
+                        <a href="#">
+                            <span className="icon"><IonIcon icon={qrCodeOutline} /></span>
+                            <span className="title">Generate QR</span>
                         </a>
                     </li>
                     <li className={`list ${selectedTab === 'logout' ? 'active' : ''}`} id="logout" onClick={logout}>
                         <b></b>
                         <b></b>
                         <a href="#">
-                            <span className="icon"><IonIcon icon={logOutOutline}/></span>
+                            <span className="icon"><IonIcon icon={logOutOutline} /></span>
                             <span className="title">Logout</span>
                         </a>
                     </li>
@@ -103,14 +125,14 @@ function AdminPage() {
                 <ion-icon name="menu-" className="open"></ion-icon>
                 <ion-icon name="close-outline" className="close"></ion-icon>
                 <div className="toggle" onClick={handleToggle}>
-                    <IonIcon icon={menuOutline}/></div>
+                    <IonIcon icon={menuOutline} /></div>
             </div>
 
             {selectedTab === 'home' && (
                 <div className="welcome-message">
                     <h1>Welcome to ChainGuard, Admin</h1>
 
-                    <img src="/logo.png" alt="ChainGuard Logo"/>
+                    <img src="/logo.png" alt="ChainGuard Logo" />
                 </div>
             )}
 
@@ -120,8 +142,13 @@ function AdminPage() {
 
 
             {selectedTab === 'createBox' && (
-                <div className="create-box-container">
-                    <QrCodeGenerator/>
+                <BoxList />
+            )}
+
+            {selectedTab === 'generateQR' && (
+                <div className="generate-qr-container">
+
+                    <QrCodeGenerator />
                 </div>
             )}
         </div>

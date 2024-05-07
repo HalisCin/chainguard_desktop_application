@@ -1,4 +1,4 @@
-.users-list-container {
+.box-list-container {
     width: 120%;
     margin: auto;
     margin-top: 15px; /* Added space from the top */
@@ -54,7 +54,6 @@ button:hover {
 .orange-icon {
     color: orange;
 }
-
 .search-bar-container {
     position: relative;
     display: flex;
